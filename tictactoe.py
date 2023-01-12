@@ -56,13 +56,20 @@ def joueur_coup(grille):
     if coup >= 1 and coup <= 9 and grille[coup-1] == "-":
         grille[coup-1] = joueur_en_cours
     else:
-        print("Action non possible !")
-        
+        print("Action impossible !")
+        coup = int(input("Choisisser une autre case ou Entrer un nombre entre 1 et 9 !!! : "))
+    # while coup <= 1 or coup >= 9 and grille[coup-1] != "-":
+    #     grille[coup-1] = joueur_en_cours
+    #     print("Action impossible, rejouer une nouvelle fois !")
+    #     coup = int(input("Entrer un nombre entre 1 et 9: "))
+    
+
+
         
         
 #vérifier si la partie est gagnée 
 
-    """ on vérifie si les différentes possiblités de victoires sont remplies, en ligne, en colonne, en diagonale.
+""" on vérifie si les différentes possiblités de victoires sont remplies, en ligne, en colonne, en diagonale.
     """
     
     
@@ -80,6 +87,7 @@ def vérification_par_ligne(grille):
     """
     
     global gagnant
+    
     
     if grille[0] == grille[1] == grille[2] and grille[1] != "-":
         gagnant = grille[0]     
@@ -114,6 +122,7 @@ def vérification_par_colonne(grille):
     
     global gagnant
     
+    
     if grille[0] == grille[3] == grille[6] and grille[0] != "-":
         gagnant = grille[0]     
         return True  
@@ -131,6 +140,7 @@ def vérification_par_colonne(grille):
 def vérification_en_diagonale(grille):
     
     global gagnant
+   
     if grille[0] == grille[4] == grille[8] and grille[0] != "-":
         gagnant = grille[0]     
         return True  
@@ -165,7 +175,8 @@ def vérification_partie_nulle(grille):
         _type_: _description_
     """ 
     
-    global partie_en_cours
+    #global partie_en_cours
+    partie_en_cours = True
     if "-" not in grille:
         afficher_grille(grille)
         print("la partie est nulle !")
@@ -186,7 +197,8 @@ def vérification_de_victoire():
 def changer_de_joueur(): 
     """_summary_ on vérifie si le joueur actuel utilise le signe "X" ou "O" en le comparant à la valeur initiale "X".
     """
-    global joueur_en_cours 
+    global joueur_en_cours
+    
     if joueur_en_cours == "X":
         joueur_en_cours = "O"
     else:
