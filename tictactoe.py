@@ -10,7 +10,7 @@
 
 
 #Variables globales
-
+import os
 grille = ["-", "-", "-",
           "-", "-", "-",
           "-", "-", "-"]
